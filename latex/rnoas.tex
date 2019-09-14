@@ -4,10 +4,27 @@
 \usepackage{amsthm}
 
 \newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
 
-\renewcommand{\P}[1]{\mathbb{P}_t\left[#1\right]}
+\newcommand{\bra}[1]{\left[#1\right]}
+\renewcommand{\P}[1]{\mathbb{P}_t\bra{#1}}
+\newcommand{\mub}[1]{\mu\bra{#1}}
+\newcommand{\sigmab}[1]{\sigma\bra{#1}}
 
 \begin{document}
+
+\begin{lem}
+  \begin{eqnarray*}
+    \P{X_T} = X_t + \int_0^T\P{\mub{X}_s}ds
+  \end{eqnarray*}
+\end{lem}
+\begin{proof}
+  \begin{eqnarray*}
+    \P{X_T} & = & \P{X_t + \int_t^T \mub{X}_s ds + \int_t^T\sigmab{X}_s dW_s}\\
+    & = & \P{X_t} + \P{\int_t^T \mub{X}_s ds} + \P{\int_t^T\sigmab{X}_s dW_s}\\
+    & = & X_t + \P{\int_t^T \mub{X}_s ds} = X_t + \int_t^T \P{\mub{X}_s} ds\\
+  \end{eqnarray*}
+\end{proof}
 
 \begin{thm}
   \begin{eqnarray*}
