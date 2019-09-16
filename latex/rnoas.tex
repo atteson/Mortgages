@@ -9,13 +9,14 @@
 \newcommand{\bra}[1]{\left[#1\right]}
 \renewcommand{\P}[1]{\mathbb{P}_t\bra{#1}}
 \newcommand{\mub}[1]{\mu\bra{#1}}
+\newcommand{\mun}[2]{\mu^{#1}\bra{#2}}
 \newcommand{\sigmab}[1]{\sigma\bra{#1}}
 
 \begin{document}
 
 \begin{lem}
   \begin{eqnarray*}
-    \P{X_T} = X_t + \int_0^T\P{\mub{X}_s}ds
+    \P{X_T} = X_t + \int_t^T\P{\mub{X}_s}ds
   \end{eqnarray*}
 \end{lem}
 \begin{proof}
@@ -25,6 +26,12 @@
     & = & X_t + \P{\int_t^T \mub{X}_s ds} = X_t + \int_t^T \P{\mub{X}_s} ds\\
   \end{eqnarray*}
 \end{proof}
+
+\begin{lem}
+  \begin{eqnarray*}
+    \P{X_T} = \sum_{i=0}^n \frac{\left(T - t\right)^i}{i!} \mun{i}{X}_t + \int_t^T \int_t^{t_1} \ldots \int_t^{t_n} \P{\mun{n}{X}_{t_n}} dt_n \ldots dt_2 dt_1
+  \end{eqnarray*}
+\end{lem}
 
 \begin{thm}
   \begin{eqnarray*}
