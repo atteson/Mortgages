@@ -28,6 +28,32 @@
 \end{proof}
 
 \begin{lem}
+  \begin{eqnarray}
+    \int_t^{s_m} \int_t^{s_{m-1}} \ldots \int_t^{s_1} 1 ds_1 \ldots ds_{m-1} ds_m = \frac{\left(s_m - t\right)^m}{m!}\label{eq:int}
+  \end{eqnarray}
+\end{lem}
+\begin{proof}
+  We proceed by induction:
+
+  \begin{enumerate}
+  \item
+    For the base case, we consider $m=0$.
+    In this case, the left hand side of (\ref{eq:int}) involves no integrals and so equals $1$.
+    The right hand side of (\ref{eq:int}) also equals $1$ since the numerator has power $0$ and for the denominator, $0! = 1$.
+
+  \item
+    Assuming (\ref{eq:int}) holds for $m$, we demonstrate it for $m+1$:
+
+    \begin{eqnarray*}
+      \lefteqn{\int_t^{s_{m+1}} \int_t^{s_m} \int_t^{s_{m-1}} \ldots \int_t^{s_1} 1 ds_1 \ldots ds_{m-1} ds_m ds_{m+1}}\\
+      & = & \int_t^{s_{m+1}} \frac{\left(s_m - t\right)^m}{m!} ds_{m+1} = \left.\frac{\frac{1}{m+1} \left(s_m - t\right)^{m+1}}{m!}\right|_t^{s_{m+1}} = \frac{\left(s_m - t\right)^{m+1}}{(m+1)!}
+    \end{eqnarray*}
+    %
+    which was to be shown.
+  \end{enumerate}
+\end{proof}
+
+\begin{lem}
   \begin{eqnarray*}
     \P{X_T} = \sum_{i=0}^n \frac{\left(T - t\right)^i}{i!} \mun{i}{X}_t + \int_t^T \int_t^{t_1} \ldots \int_t^{t_n} \P{\mun{n}{X}_{t_n}} dt_n \ldots dt_2 dt_1
   \end{eqnarray*}
