@@ -73,13 +73,8 @@
     which equals the left hand side which was to be shown.
 
   \item
-    Assuming \ref{eq:trunc} is true for $n$, we will demonstrate it for $n+1$:
-    
-    \begin{eqnarray*}
-\P{X_{t_0}} = \sum_{i=0}^{n-1} \frac{\left(t_0 - t\right)^i}{i!} \mun{i}{X}_t + \int_t^{t_0} \int_t^{t_1} \ldots \int_t^{t_{n-1}} \P{\mun{n}{X}_{t_n}} dt_n \ldots dt_2 dt_1\\
-    \end{eqnarray*}
-    %
-    We expand the last term:
+    Assuming (\ref{eq:trunc}) is true for $n$, we will demonstrate it for $n+1$.
+    We expand the last term of the right hand side of (\ref{eq:trunc}):
 
     \begin{eqnarray*}
       \lefteqn{\int_t^{t_0} \int_t^{t_1} \ldots \int_t^{t_{n-1}} \P{\mun{n}{X}_{t_n}} dt_n \ldots dt_2 dt_1}\\
@@ -88,13 +83,18 @@
     \end{eqnarray*}
     %
     where we have applied Lemma \ref{lem:Ito} followed by Lemma \ref{lem:integral}.
+    Adding this to the first term of the right hand side of (\ref{eq:trunc}) yields the desired result:
+
+    \begin{eqnarray*}
+      & = & \sum_{i=0}^n \mun{i}{X}_t \frac{\left(t_0 - t\right)^i}{i!} + \int_t^{t_0} \ldots \int_t^{t_{n-1}} \int_t^{t_n}\P{\mun{n}{X}_{t_{n+1}}}dt_{n+1}dt_n \ldots dt_1\\
+    \end{eqnarray*}
     
   \end{enumerate}
 \end{proof}
 
 \begin{thm}
   \begin{eqnarray*}
-    \P{X_T}
+    \P{X_{t_0}} = \sum_{i=0}^\infty \mun{i}{X}_t \frac{\left(t_0 - t\right)^i}{i!}
   \end{eqnarray*}
 \end{thm}
 
